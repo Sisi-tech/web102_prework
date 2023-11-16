@@ -16,7 +16,6 @@ function deleteChildElements(parent) {
         parent.removeChild(parent.firstChild);
     }
 }
-
 /*****************************************************************************
  * Challenge 3: Add data about each game as a card to the games-container
  * Skills used: DOM manipulation, for loops, template literals, functions
@@ -27,7 +26,6 @@ const gamesContainer = document.getElementById("games-container");
 
 // create a function that adds all data from the games array to the page
 function addGamesToPage(games) {
-
     // loop over each item in the data
     for (const game of games) {
         const name = game.name;
@@ -36,11 +34,14 @@ function addGamesToPage(games) {
         const goal = game.goal;
         const backers = game.backers;
         const img = game.img;
-
+    // create a new div element, which will become the game card
         const div = document.createElement('div');
         div.classList.add("game-card");
+    // add the class game-card to the list
+    // set the inner HTML using a template literal to display some info 
+    // about each game
         div.innerHTML = `
-                        <img src="${name}" class="game-img" alt="${name}" />
+                        <img src="${img}" class="game-img" alt="${name}" />
                         <h2>Game Name: ${name}</h2>
                         <p>Game Description: ${description}</p>
                         <p>Pledged: $${pledged.toString()}</p>
@@ -48,26 +49,13 @@ function addGamesToPage(games) {
                         <p>Backers: ${backers}</p>
                         <p>
                         `;
+    // append the game to the games-container
         gamesContainer.appendChild(div);
     }
-addGamesToPage(GAMES_JSON);
-        // create a new div element, which will become the game card
-    
-    
-        // add the class game-card to the list
-
-
-        // set the inner HTML using a template literal to display some info 
-        // about each game
-        // TIP: if your images are not displaying, make sure there is space
-        // between the end of the src attribute and the end of the tag ("/>")
-
-
-        // append the game to the games-container
-
 }
-
 // call the function we just defined using the correct variable
+addGamesToPage(GAMES_JSON);
+
 // later, we'll call this function using a different list of games
 
 
